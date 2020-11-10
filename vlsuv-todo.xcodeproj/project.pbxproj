@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		671819B6255A9B8600D8A3BE /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671819B5255A9B8600D8A3BE /* SignUpController.swift */; };
 		67DC8A812559EC5800545F39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC8A802559EC5800545F39 /* AppDelegate.swift */; };
 		67DC8A832559EC5800545F39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC8A822559EC5800545F39 /* SceneDelegate.swift */; };
 		67DC8A852559EC5800545F39 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC8A842559EC5800545F39 /* LoginController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		671819B5255A9B8600D8A3BE /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		67DC8A7D2559EC5800545F39 /* vlsuv-todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vlsuv-todo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67DC8A802559EC5800545F39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67DC8A822559EC5800545F39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				67DC8A842559EC5800545F39 /* LoginController.swift */,
+				671819B5255A9B8600D8A3BE /* SignUpController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				67DC8A852559EC5800545F39 /* LoginController.swift in Sources */,
 				67DC8AA72559FFA600545F39 /* Colors.swift in Sources */,
 				67DC8AA42559FAEF00545F39 /* BaseLoginTextField.swift in Sources */,
+				671819B6255A9B8600D8A3BE /* SignUpController.swift in Sources */,
 				67DC8A812559EC5800545F39 /* AppDelegate.swift in Sources */,
 				67DC8A832559EC5800545F39 /* SceneDelegate.swift in Sources */,
 				67DC8AA9255A061600545F39 /* Style.swift in Sources */,

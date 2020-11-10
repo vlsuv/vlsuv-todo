@@ -72,7 +72,7 @@ class LoginController: UIViewController {
     }
     
     @objc private func showRegistationPage() {
-        
+        navigationController?.pushViewController(SignUpController(), animated: true)
     }
     
     // MARK: - Handlers
