@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		671819B6255A9B8600D8A3BE /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671819B5255A9B8600D8A3BE /* SignUpController.swift */; };
+		678A4BA4255AD4B40004E00B /* ListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A4BA3255AD4B40004E00B /* ListsController.swift */; };
+		678A4BA7255AD6020004E00B /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A4BA6255AD6020004E00B /* List.swift */; };
+		678A4BA9255AD69B0004E00B /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A4BA8255AD69B0004E00B /* ListCell.swift */; };
+		678A4BAB255ADD8E0004E00B /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A4BAA255ADD8E0004E00B /* Images.swift */; };
+		678F4B0C255C4B2D002250CA /* UserInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F4B0B255C4B2D002250CA /* UserInfoButton.swift */; };
+		678F4B0E255C5AF9002250CA /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F4B0D255C5AF9002250CA /* BottomMenuView.swift */; };
 		67DC8A812559EC5800545F39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC8A802559EC5800545F39 /* AppDelegate.swift */; };
 		67DC8A832559EC5800545F39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC8A822559EC5800545F39 /* SceneDelegate.swift */; };
 		67DC8A852559EC5800545F39 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC8A842559EC5800545F39 /* LoginController.swift */; };
@@ -22,6 +28,12 @@
 
 /* Begin PBXFileReference section */
 		671819B5255A9B8600D8A3BE /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		678A4BA3255AD4B40004E00B /* ListsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsController.swift; sourceTree = "<group>"; };
+		678A4BA6255AD6020004E00B /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		678A4BA8255AD69B0004E00B /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		678A4BAA255ADD8E0004E00B /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		678F4B0B255C4B2D002250CA /* UserInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoButton.swift; sourceTree = "<group>"; };
+		678F4B0D255C5AF9002250CA /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
 		67DC8A7D2559EC5800545F39 /* vlsuv-todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vlsuv-todo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67DC8A802559EC5800545F39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67DC8A822559EC5800545F39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +59,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		678A4BA0255AD4730004E00B /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+				678A4BA5255AD5A00004E00B /* Model */,
+				678A4BA1255AD48E0004E00B /* View */,
+				678A4BA2255AD4980004E00B /* Controller */,
+			);
+			path = Lists;
+			sourceTree = "<group>";
+		};
+		678A4BA1255AD48E0004E00B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				678A4BA8255AD69B0004E00B /* ListCell.swift */,
+				678F4B0B255C4B2D002250CA /* UserInfoButton.swift */,
+				678F4B0D255C5AF9002250CA /* BottomMenuView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		678A4BA2255AD4980004E00B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				678A4BA3255AD4B40004E00B /* ListsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		678A4BA5255AD5A00004E00B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				678A4BA6255AD6020004E00B /* List.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		67DC8A742559EC5800545F39 = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +117,7 @@
 			children = (
 				67DC8A9D2559F9BB00545F39 /* Application */,
 				67DC8A9A2559F52800545F39 /* Login */,
+				678A4BA0255AD4730004E00B /* Lists */,
 				67DC8A972559F13500545F39 /* Utils */,
 				67DC8A962559EF4600545F39 /* Supporting Files */,
 			);
@@ -96,8 +145,8 @@
 		67DC8A9A2559F52800545F39 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				67DC8A9B2559F5B100545F39 /* Controller */,
 				67DC8AA22559FA9C00545F39 /* View */,
+				67DC8A9B2559F5B100545F39 /* Controller */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -150,6 +199,7 @@
 			children = (
 				67DC8AA62559FFA600545F39 /* Colors.swift */,
 				67DC8AA8255A061600545F39 /* Style.swift */,
+				678A4BAA255ADD8E0004E00B /* Images.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -226,12 +276,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				67DC8A852559EC5800545F39 /* LoginController.swift in Sources */,
+				678A4BAB255ADD8E0004E00B /* Images.swift in Sources */,
 				67DC8AA72559FFA600545F39 /* Colors.swift in Sources */,
+				678F4B0C255C4B2D002250CA /* UserInfoButton.swift in Sources */,
 				67DC8AA42559FAEF00545F39 /* BaseLoginTextField.swift in Sources */,
+				678F4B0E255C5AF9002250CA /* BottomMenuView.swift in Sources */,
+				678A4BA7255AD6020004E00B /* List.swift in Sources */,
 				671819B6255A9B8600D8A3BE /* SignUpController.swift in Sources */,
 				67DC8A812559EC5800545F39 /* AppDelegate.swift in Sources */,
+				678A4BA9255AD69B0004E00B /* ListCell.swift in Sources */,
 				67DC8A832559EC5800545F39 /* SceneDelegate.swift in Sources */,
 				67DC8AA9255A061600545F39 /* Style.swift in Sources */,
+				678A4BA4255AD4B40004E00B /* ListsController.swift in Sources */,
 				67DC8A992559F14900545F39 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

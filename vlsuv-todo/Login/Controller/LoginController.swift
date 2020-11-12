@@ -68,7 +68,9 @@ class LoginController: UIViewController {
     
     // MARK: - Login Actions
     @objc private func handleLogin() {
-        
+        let controller = UINavigationController(rootViewController: ListsController())
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: false)
     }
     
     @objc private func showRegistationPage() {

@@ -11,4 +11,5 @@ import UIKit
 enum Sizes {
     static let buttonHeight: CGFloat = 50
     static let cornerRadius: CGFloat = 6
+    static let cellHeight: CGFloat = 48
 }
