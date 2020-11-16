@@ -11,9 +11,10 @@ import UIKit
 enum Colors {
     static let white = UIColor.white
     static let black = UIColor.black
+    static let baseBlue = UIColor.init(hex: "#445EE9")
     static let darkGray = UIColor.init(hex: "#444444")
     static let mediumGray = UIColor.init(hex: "#8B8B8B")
     static let lightGray = UIColor.init(hex: "#EDEDED")
-    static let baseBlue = UIColor.init(hex: "#445EE9")
-    static let red = UIColor.init(hex: "FFFFFF")
+    static let veryLightGray = UIColor.init(hex: "#FBFBFB")
+    static let red = UIColor.init(hex: "#FF0000")
 }

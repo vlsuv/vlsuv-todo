@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		18244DA539DE60CA29FDA627 /* Pods_vlsuv_todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B8C167D6272F4DBD2F264D3 /* Pods_vlsuv_todo.framework */; };
+		67121C9A25619D5B007F4BDC /* SettingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67121C9925619D5B007F4BDC /* SettingSectionHeaderView.swift */; };
 		671819B6255A9B8600D8A3BE /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671819B5255A9B8600D8A3BE /* SignUpController.swift */; };
 		675D656D255D05D700291338 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 675D656C255D05D700291338 /* GoogleService-Info.plist */; };
 		678A4BA4255AD4B40004E00B /* ListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A4BA3255AD4B40004E00B /* ListsController.swift */; };
@@ -16,6 +17,11 @@
 		678A4BAB255ADD8E0004E00B /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678A4BAA255ADD8E0004E00B /* Images.swift */; };
 		678F4B0C255C4B2D002250CA /* UserInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F4B0B255C4B2D002250CA /* UserInfoButton.swift */; };
 		678F4B0E255C5AF9002250CA /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F4B0D255C5AF9002250CA /* BottomMenuView.swift */; };
+		6799241525618A8900B7903D /* SignOutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6799241425618A8900B7903D /* SignOutButton.swift */; };
+		67AF6E43255ECC5100A4087F /* AccountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AF6E42255ECC5100A4087F /* AccountInfoView.swift */; };
+		67C8436D255D6B7700FCA9E6 /* AccountSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C8436C255D6B7700FCA9E6 /* AccountSettingsController.swift */; };
+		67C8436F255D6DA900FCA9E6 /* AccountSettingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C8436E255D6DA900FCA9E6 /* AccountSettingSection.swift */; };
+		67C84371255D726100FCA9E6 /* SmartListSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C84370255D726100FCA9E6 /* SmartListSettingCell.swift */; };
 		67DC8A812559EC5800545F39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC8A802559EC5800545F39 /* AppDelegate.swift */; };
 		67DC8A832559EC5800545F39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC8A822559EC5800545F39 /* SceneDelegate.swift */; };
 		67DC8A852559EC5800545F39 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DC8A842559EC5800545F39 /* LoginController.swift */; };
@@ -30,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		3B8C167D6272F4DBD2F264D3 /* Pods_vlsuv_todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vlsuv_todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67121C9925619D5B007F4BDC /* SettingSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionHeaderView.swift; sourceTree = "<group>"; };
 		671819B5255A9B8600D8A3BE /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		675D656C255D05D700291338 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		678A4BA3255AD4B40004E00B /* ListsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsController.swift; sourceTree = "<group>"; };
@@ -38,6 +45,11 @@
 		678A4BAA255ADD8E0004E00B /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		678F4B0B255C4B2D002250CA /* UserInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoButton.swift; sourceTree = "<group>"; };
 		678F4B0D255C5AF9002250CA /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
+		6799241425618A8900B7903D /* SignOutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutButton.swift; sourceTree = "<group>"; };
+		67AF6E42255ECC5100A4087F /* AccountInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoView.swift; sourceTree = "<group>"; };
+		67C8436C255D6B7700FCA9E6 /* AccountSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsController.swift; sourceTree = "<group>"; };
+		67C8436E255D6DA900FCA9E6 /* AccountSettingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingSection.swift; sourceTree = "<group>"; };
+		67C84370255D726100FCA9E6 /* SmartListSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartListSettingCell.swift; sourceTree = "<group>"; };
 		67DC8A7D2559EC5800545F39 /* vlsuv-todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vlsuv-todo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67DC8A802559EC5800545F39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67DC8A822559EC5800545F39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,8 +84,15 @@
 				EA0AF9B59A6C1F480B23E4D6 /* Pods-vlsuv-todo.debug.xcconfig */,
 				ADE2A19447E900694C398DC0 /* Pods-vlsuv-todo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		67121C98256198CC007F4BDC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				67C84370255D726100FCA9E6 /* SmartListSettingCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		678A4BA0255AD4730004E00B /* Lists */ = {
@@ -112,6 +131,43 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		67C84368255D6AA300FCA9E6 /* AccountSettings */ = {
+			isa = PBXGroup;
+			children = (
+				67C8436A255D6AE500FCA9E6 /* Model */,
+				67C84369255D6ADD00FCA9E6 /* View */,
+				67C8436B255D6AEC00FCA9E6 /* Controller */,
+			);
+			path = AccountSettings;
+			sourceTree = "<group>";
+		};
+		67C84369255D6ADD00FCA9E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				67121C98256198CC007F4BDC /* Cell */,
+				67AF6E42255ECC5100A4087F /* AccountInfoView.swift */,
+				6799241425618A8900B7903D /* SignOutButton.swift */,
+				67121C9925619D5B007F4BDC /* SettingSectionHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		67C8436A255D6AE500FCA9E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				67C8436E255D6DA900FCA9E6 /* AccountSettingSection.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		67C8436B255D6AEC00FCA9E6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				67C8436C255D6B7700FCA9E6 /* AccountSettingsController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		67DC8A742559EC5800545F39 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				67DC8A9D2559F9BB00545F39 /* Application */,
+				67C84368255D6AA300FCA9E6 /* AccountSettings */,
 				67DC8A9A2559F52800545F39 /* Login */,
 				678A4BA0255AD4730004E00B /* Lists */,
 				67DC8A972559F13500545F39 /* Utils */,
@@ -351,15 +408,21 @@
 				67DC8A852559EC5800545F39 /* LoginController.swift in Sources */,
 				678A4BAB255ADD8E0004E00B /* Images.swift in Sources */,
 				67DC8AA72559FFA600545F39 /* Colors.swift in Sources */,
+				67C8436D255D6B7700FCA9E6 /* AccountSettingsController.swift in Sources */,
+				67121C9A25619D5B007F4BDC /* SettingSectionHeaderView.swift in Sources */,
 				678F4B0C255C4B2D002250CA /* UserInfoButton.swift in Sources */,
 				67DC8AA42559FAEF00545F39 /* BaseLoginTextField.swift in Sources */,
 				678F4B0E255C5AF9002250CA /* BottomMenuView.swift in Sources */,
 				678A4BA7255AD6020004E00B /* List.swift in Sources */,
+				67AF6E43255ECC5100A4087F /* AccountInfoView.swift in Sources */,
+				6799241525618A8900B7903D /* SignOutButton.swift in Sources */,
+				67C84371255D726100FCA9E6 /* SmartListSettingCell.swift in Sources */,
 				671819B6255A9B8600D8A3BE /* SignUpController.swift in Sources */,
 				67DC8A812559EC5800545F39 /* AppDelegate.swift in Sources */,
 				678A4BA9255AD69B0004E00B /* ListCell.swift in Sources */,
 				67DC8A832559EC5800545F39 /* SceneDelegate.swift in Sources */,
 				67DC8AA9255A061600545F39 /* Style.swift in Sources */,
+				67C8436F255D6DA900FCA9E6 /* AccountSettingSection.swift in Sources */,
 				678A4BA4255AD4B40004E00B /* ListsController.swift in Sources */,
 				67DC8A992559F14900545F39 /* Extensions.swift in Sources */,
 			);

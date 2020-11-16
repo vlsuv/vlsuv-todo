@@ -35,6 +35,9 @@ class ListsController: UIViewController {
     }
     
     @objc private func showUserSettings() {
+        let controller = UINavigationController(rootViewController: AccountSettingsController())
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true)
     }
     
     // MARK: - Handlers
@@ -54,7 +57,7 @@ class ListsController: UIViewController {
         view.addSubview(tableView)
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, bottom: view.bottomAnchor, paddingBottom: bottomMenuView.bottomMenuViewHeight)
         
-        tableView.rowHeight = Sizes.cellHeight
+        tableView.rowHeight = Sizes.listCellHeight
         tableView.separatorStyle = .none
     }
     

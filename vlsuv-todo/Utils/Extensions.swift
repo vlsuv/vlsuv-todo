@@ -42,6 +42,13 @@ extension UIView {
             widthAnchor.constraint(equalToConstant: width).isActive = true
         }
     }
+    
+    func addTopBorder(color: UIColor) {
+        let topBorder = UIView()
+        topBorder.backgroundColor = color
+        self.addSubview(topBorder)
+        topBorder.anchor(top:self.topAnchor, left: self.leftAnchor, right: self.rightAnchor, height: 1)
+    }
 }
 
 // MARK: - UIColor
