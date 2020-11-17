@@ -26,7 +26,6 @@ class BaseLoginTextField: UITextField {
         configure(secureText: secureText)
         addTitle(text: name)
         addBottomBorder()
-        
     }
     
     required init?(coder: NSCoder) {
