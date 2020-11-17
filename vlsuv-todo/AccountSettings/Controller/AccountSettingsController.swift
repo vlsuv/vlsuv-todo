@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AccountSettingsController: UIViewController {
     // MARK: - Properties
@@ -27,6 +28,10 @@ class AccountSettingsController: UIViewController {
         
         configureNavigationController()
         configureTableView()
+    }
+    
+    deinit {
+        print("deinit: account setting controller")
     }
     
     // MARK: - Actions
@@ -132,5 +137,11 @@ extension AccountSettingsController: AccountInfoViewDelegate {
 // MARK: - SignOutButtonDelegate
 extension AccountSettingsController: SignOutButtonDelegate {
     func didTapSignOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error.localizedDescription)
+        }
+        view.window?.rootViewController?.dismiss(animated: false)
     }
 }
