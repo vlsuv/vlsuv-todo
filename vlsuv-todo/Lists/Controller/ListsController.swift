@@ -30,6 +30,10 @@ class ListsController: UIViewController {
         setupBottomMenu()
     }
     
+    deinit {
+        print("deinit: ListController")
+    }
+    
     // MARK: - BarButton Actions
     @objc private func handleSearch() {
     }

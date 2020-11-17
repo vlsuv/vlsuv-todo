@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginController: UIViewController {
     // MARK: - Properties
-    let headerTitle: UILabel = {
+    private let headerTitle: UILabel = {
         let label = UILabel()
         label.text = "Glad to see you!"
         label.font = .systemFont(ofSize: 32, weight: .medium)
@@ -18,18 +19,20 @@ class LoginController: UIViewController {
         return label
     }()
     
-    let emailTextField: BaseLoginTextField = {
+    private let emailTextField: BaseLoginTextField = {
         let textField = BaseLoginTextField(name: "Email")
         textField.keyboardType = .emailAddress
+        textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return textField
     }()
     
-    let passwordTextField: BaseLoginTextField = {
+    private let passwordTextField: BaseLoginTextField = {
         let textField = BaseLoginTextField(name: "Password", secureText: true)
+        textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return textField
     }()
     
-    let loginButton: UIButton = {
+    private let loginButton: UIButton = {
         let button = UIButton()
         let normalAttributedString = NSAttributedString(string: "Login", attributes: [
             NSAttributedString.Key.foregroundColor: Colors.white,
@@ -38,10 +41,12 @@ class LoginController: UIViewController {
         button.setAttributedTitle(normalAttributedString, for: .normal)
         button.backgroundColor = Colors.baseBlue
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        button.alpha = 0.5
+        button.isEnabled = false
         return button
     }()
     
-    let registrationPageButton: UIButton = {
+    private let registrationPageButton: UIButton = {
         let button = UIButton()
         let normalAttributedString = NSMutableAttributedString(string: "Dont have an account? ", attributes: [
             NSAttributedString.Key.foregroundColor: Colors.mediumGray,
@@ -55,6 +60,16 @@ class LoginController: UIViewController {
         button.addTarget(self, action: #selector(showRegistationPage), for: .touchUpInside)
         return button
     }()
+    
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.textColor = Colors.red
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.isHidden = true
+        return label
+    }()
 
     // MARK: - Init
     override func viewDidLoad() {
@@ -66,15 +81,55 @@ class LoginController: UIViewController {
         setupRegistrationPageButton()
     }
     
-    // MARK: - Login Actions
+    override func viewWillAppear(_ animated: Bool) {
+        checkUserAuth()
+    }
+    
+    // MARK: - Actions
     @objc private func handleLogin() {
+        UserManager.signIn(email: emailTextField.text!, password: passwordTextField.text!) { [weak self] error in
+            if let error = error {
+                self?.showErrorLabel(errorMessage: error.localizedDescription)
+                return
+            }
+
+            self?.showListsPage()
+        }
+    }
+    
+    @objc private func showRegistationPage() {
+        navigationController?.pushViewController(SignUpController(), animated: true)
+    }
+    
+    @objc private func handleTextInputChange() {
+        if emailTextField.text != "" &&
+            passwordTextField.text != "" {
+            loginButton.isEnabled = true
+            loginButton.alpha = 1
+        } else {
+            loginButton.isEnabled = false
+            loginButton.alpha = 0.5
+        }
+    }
+    
+    // MARK: - Helpers
+    private func checkUserAuth() {
+        Auth.auth().addStateDidChangeListener { [weak self] auth, user in
+            if user != nil {
+                self?.showListsPage()
+            }
+        }
+    }
+    
+    private func showListsPage() {
         let controller = UINavigationController(rootViewController: ListsController())
         controller.modalPresentationStyle = .fullScreen
         present(controller, animated: false)
     }
     
-    @objc private func showRegistationPage() {
-        navigationController?.pushViewController(SignUpController(), animated: true)
+    private func showErrorLabel(errorMessage: String) {
+        errorLabel.isHidden = false
+        errorLabel.text = errorMessage
     }
     
     // MARK: - Handlers
@@ -83,7 +138,7 @@ class LoginController: UIViewController {
     }
     
     private func setupInputElements() {
-        let stackView = UIStackView(arrangedSubviews: [headerTitle, emailTextField, passwordTextField, loginButton])
+        let stackView = UIStackView(arrangedSubviews: [headerTitle, emailTextField, passwordTextField, loginButton, errorLabel])
         stackView.axis = .vertical
         stackView.spacing = 40
         
@@ -100,4 +155,3 @@ class LoginController: UIViewController {
         registrationPageButton.anchor(bottom: view.bottomAnchor, paddingBottom: 40)
     }
 }
-

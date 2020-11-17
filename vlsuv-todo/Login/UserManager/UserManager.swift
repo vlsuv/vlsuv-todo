@@ -24,4 +24,15 @@ class UserManager {
             completion(nil)
         }
     }
+    
+    static func signIn(email: String, password: String, completion: @escaping (Error?) -> ()) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            completion(nil)
+        }
+    }
 }
