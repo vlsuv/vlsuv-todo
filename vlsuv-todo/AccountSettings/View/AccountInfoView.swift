@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol AccountInfoViewDelegate {
+protocol AccountInfoViewDelegate: class {
     func didTapEditAccount()
 }
 
 class AccountInfoView: UIView {
     // MARK: - Properties
-    var delegate: AccountInfoViewDelegate!
+    weak var delegate: AccountInfoViewDelegate!
     
     static let accountInfoViewHeight: CGFloat = 210
     private let userImageViewHeight: CGFloat = 70

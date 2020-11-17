@@ -76,7 +76,7 @@ class AccountSettingsController: UIViewController {
     private func setupSignOutButton() {
         signOutButton = SignOutButton(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: SignOutButton.signOutButtonHeight))
         signOutButton.delegate = self
-        
+
         tableView.tableFooterView = signOutButton
     }
 }

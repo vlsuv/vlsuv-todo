@@ -124,7 +124,10 @@ class LoginController: UIViewController {
     private func showListsPage() {
         let controller = UINavigationController(rootViewController: ListsController())
         controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: false)
+        self.present(controller, animated: false)
+        
+        emailTextField.text = ""
+        passwordTextField.text = ""
     }
     
     private func showErrorLabel(errorMessage: String) {

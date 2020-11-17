@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol BottomMenuViewDelegate {
+protocol BottomMenuViewDelegate: class {
     func didTapCreateList()
 }
 
 class BottomMenuView: UIView {
     // MARK: - Properties
-    var delegate: BottomMenuViewDelegate!
+    weak var delegate: BottomMenuViewDelegate!
     let bottomMenuViewHeight: CGFloat = 44
     
     private let createListButton: UIButton = {

@@ -31,7 +31,7 @@ class ListsController: UIViewController {
     }
     
     deinit {
-        print("deinit: ListController")
+        print("deinit: listcontroller")
     }
     
     // MARK: - BarButton Actions

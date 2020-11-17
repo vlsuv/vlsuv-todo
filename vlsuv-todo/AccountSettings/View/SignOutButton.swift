@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol SignOutButtonDelegate {
+protocol SignOutButtonDelegate: class {
     func didTapSignOut()
 }
 
 class SignOutButton: UIButton {
     // MARK: - Properties
-    var delegate: SignOutButtonDelegate!
+    weak var delegate: SignOutButtonDelegate!
     static let signOutButtonHeight: CGFloat = 44
     
     // MARK: - Init

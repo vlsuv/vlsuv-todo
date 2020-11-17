@@ -71,6 +71,10 @@ class SignUpController: UIViewController {
         setupInputElements()
     }
     
+    deinit {
+        print("deinit: signupcontroller")
+    }
+    
     // MARK: - Actions
     @objc private func handleSignUp() {
         UserManager.createUser(email: emailTextField.text!, password: passwordTextField.text!) { [weak self] error in
