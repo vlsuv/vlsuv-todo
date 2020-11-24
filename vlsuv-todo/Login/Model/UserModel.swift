@@ -17,4 +17,11 @@ struct UserModel {
         self.uid = user.uid
         self.email = user.email!
     }
+    
+    func convertToDictionary() -> [String: Any] {
+        return [
+            "uid": uid,
+            "email": email
+        ]
+    }
 }

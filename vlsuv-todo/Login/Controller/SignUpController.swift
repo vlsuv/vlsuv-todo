@@ -82,6 +82,7 @@ class SignUpController: UIViewController {
                 self?.showErrorLabel(errorMessage: error.localizedDescription)
                 return
             }
+            
             self?.navigationController?.popViewController(animated: true)
         }
     }

@@ -15,11 +15,13 @@ class AccountSettingsController: UIViewController {
     private var accountInfoView: AccountInfoView!
     private var signOutButton: SignOutButton!
     
-    private var smartListData = [
-        List(title: "All", image: .file),
-        List(title: "Important", image: .star),
-        List(title: "Completed", image: .check)
-    ]
+//    private var smartListData = [
+//        List(title: "All", image: .file),
+//        List(title: "Important", image: .star),
+//        List(title: "Completed", image: .check)
+//    ]
+    
+    private var smartListData = [List]()
     
     // MARK: - Init
     override func viewDidLoad() {

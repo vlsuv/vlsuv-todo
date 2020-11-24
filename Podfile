@@ -8,5 +8,5 @@ target 'vlsuv-todo' do
   # Pods for vlsuv-todo
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
-
+  pod 'FirebaseFirestoreSwift'
 end

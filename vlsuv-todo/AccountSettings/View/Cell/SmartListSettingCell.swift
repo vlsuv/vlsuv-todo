@@ -33,7 +33,7 @@ class SmartListSettingCell: UITableViewCell {
     
     func configure(smartList: List) {
         self.smartListTitle.text = smartList.title
-        self.smartListImage.image = smartList.image.getImage
+//        self.smartListImage.image = smartList.image.getImage
     }
     
     // MARK: - Init

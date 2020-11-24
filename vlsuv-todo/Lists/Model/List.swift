@@ -7,31 +7,46 @@
 //
 
 import UIKit
+import FirebaseFirestoreSwift
 
-struct List {
-    let title: String
-    let image: ListImage
-    
-    init(title: String, image: ListImage) {
+protocol List {
+    var id: String? {get set}
+    var title: String {get set}
+    var type: ListType {get set}
+    var image: ListImage {get set}
+}
+
+struct UserList: List, Identifiable, Codable{
+    @DocumentID var id: String? = UUID().uuidString
+    var title: String
+    var type: ListType = .user
+    var image: ListImage = .file
+    var createdDate: Date?
+
+    init(title: String, createdDate: Date?) {
         self.title = title
-        self.image = image
-    }
-    
-    enum ListImage {
-        case file
-        case star
-        case check
-        case folder
-        
-        var getImage: UIImage {
-            switch self {
-            case .file: return Images.file ?? UIImage()
-            case .star: return Images.star ?? UIImage()
-            case .check: return Images.check ?? UIImage()
-            case .folder: return Images.folder ?? UIImage()
-            }
-        }
+        self.createdDate = createdDate
     }
 }
 
-
+struct SmartList: List, Identifiable, Codable {
+    @DocumentID var id: String? = UUID().uuidString
+    var title: String
+    var type: ListType
+    var image: ListImage
+    var isShow: Bool = true
+    
+    init(title: String, type: ListType, image: ListImage) {
+        self.title = title
+        self.type = type
+        self.image = image
+    }
+    
+    static func get() -> [SmartList] {
+        return [
+            SmartList(title: "All", type: .all, image: .folder),
+            SmartList(title: "Important", type: .important, image: .star),
+            SmartList(title: "Completed", type: .completed, image: .check)
+        ]
+    }
+}
