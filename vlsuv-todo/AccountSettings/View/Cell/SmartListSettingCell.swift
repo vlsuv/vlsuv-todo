@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol SmartListSettingCellDelegate: class {
+    func didTapSwitchControl(for cell: SmartListSettingCell)
+}
+
 class SmartListSettingCell: UITableViewCell {
     // MARK: - Properties
     static let identifier = "AccountSettingCell"
+    weak var delegate: SmartListSettingCellDelegate!
     
     let smartListImage: UIImageView = {
         let imageView = UIImageView()
@@ -25,15 +30,17 @@ class SmartListSettingCell: UITableViewCell {
         return label
     }()
     
-    let smartListSwitchControl: UISwitch = {
+    lazy var smartListSwitchControl: UISwitch = {
         let switchControl = UISwitch()
         switchControl.onTintColor = Colors.baseBlue
+        switchControl.addTarget(self, action: #selector(handleSwitchControlValueChanged), for: .valueChanged)
         return switchControl
     }()
     
-    func configure(smartList: List) {
+    func configure(smartList: SmartList) {
         self.smartListTitle.text = smartList.title
-//        self.smartListImage.image = smartList.image.getImage
+        self.smartListImage.image = smartList.image.getImage
+        smartListSwitchControl.isOn = smartList.isShow
     }
     
     // MARK: - Init
@@ -49,6 +56,11 @@ class SmartListSettingCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Actions
+    @objc private func handleSwitchControlValueChanged() {
+        delegate.didTapSwitchControl(for: self)
     }
     
     // MARK: - Handlers

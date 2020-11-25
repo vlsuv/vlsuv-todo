@@ -15,13 +15,7 @@ class AccountSettingsController: UIViewController {
     private var accountInfoView: AccountInfoView!
     private var signOutButton: SignOutButton!
     
-//    private var smartListData = [
-//        List(title: "All", image: .file),
-//        List(title: "Important", image: .star),
-//        List(title: "Completed", image: .check)
-//    ]
-    
-    private var smartListData = [List]()
+    private var smartLists: [SmartList] = [SmartList]()
     
     // MARK: - Init
     override func viewDidLoad() {
@@ -30,10 +24,22 @@ class AccountSettingsController: UIViewController {
         
         configureNavigationController()
         configureTableView()
+        fetchSmartLists()
     }
     
     deinit {
         print("deinit: account setting controller")
+    }
+    
+    // MARK: - Requests
+    private func fetchSmartLists() {
+        guard let id = UserManager.currentUserId() else {return}
+        ListManager.shared.fetchSmartLists(withUserUid: id) { [weak self] smartLists in
+            guard let self = self else {return}
+            
+            self.smartLists = smartLists
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - Actions
@@ -93,7 +99,7 @@ extension AccountSettingsController: UITableViewDataSource {
         guard let accountSettingSection = AccountSettingSection(rawValue: section) else {return 0}
         switch accountSettingSection {
         case .smartLists:
-            return smartListData.count
+            return smartLists.count
         }
     }
     
@@ -102,7 +108,8 @@ extension AccountSettingsController: UITableViewDataSource {
         switch accountSettingSection {
         case .smartLists:
             let cell = tableView.dequeueReusableCell(withIdentifier: SmartListSettingCell.identifier, for: indexPath) as! SmartListSettingCell
-            let data = smartListData[indexPath.row]
+            cell.delegate = self
+            let data = smartLists[indexPath.row]
             cell.configure(smartList: data)
             return cell
         }
@@ -145,5 +152,16 @@ extension AccountSettingsController: SignOutButtonDelegate {
             print(error.localizedDescription)
         }
         view.window?.rootViewController?.dismiss(animated: false)
+    }
+}
+
+// MARK: - SmartListSettingCellDelegate
+extension AccountSettingsController: SmartListSettingCellDelegate {
+
+    func didTapSwitchControl(for cell: SmartListSettingCell) {
+        guard let indexPath = tableView.indexPath(for: cell), let id = UserManager.currentUserId() else {return}
+        var list = smartLists[indexPath.row]
+        list.isShow.toggle()
+        ListManager.shared.updateSmartList(withUserUid: id, usingList: list)
     }
 }

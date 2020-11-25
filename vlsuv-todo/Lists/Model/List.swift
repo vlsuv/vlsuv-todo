@@ -44,9 +44,7 @@ struct SmartList: List, Identifiable, Codable {
     
     static func get() -> [SmartList] {
         return [
-            SmartList(title: "All", type: .all, image: .folder),
-            SmartList(title: "Important", type: .important, image: .star),
-            SmartList(title: "Completed", type: .completed, image: .check)
+            
         ]
     }
 }

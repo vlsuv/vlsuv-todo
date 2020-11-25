@@ -16,7 +16,8 @@ class ListsController: UIViewController {
     private let userInfoButton = UserInfoButton()
     private let bottomMenuView = BottomMenuView()
     
-    private var sections: [ListsSection] = ListsSection.getSections()
+    private var smartLists = [SmartList]()
+    private var userLists = [UserList]()
     
     // MARK: - Init
     override func viewDidLoad() {
@@ -40,23 +41,13 @@ class ListsController: UIViewController {
         
         ListManager.shared.fetchSmartLists(withUserUid: id) { [weak self] smartLists in
             guard let self = self else {return}
-            
-            for index in self.sections.indices {
-                if self.sections[index].name == .smartLists {
-                    self.sections[index].lists = smartLists
-                }
-            }
+            self.smartLists = smartLists
             self.tableView.reloadData()
         }
         
         ListManager.shared.fetchUserLists(withUserUid: id) { [weak self] userLists in
             guard let self = self else {return}
-            
-            for index in self.sections.indices {
-                if self.sections[index].name == .userLists {
-                    self.sections[index].lists = userLists
-                }
-            }
+            self.userLists = userLists
             self.tableView.reloadData()
         }
     }
@@ -109,16 +100,30 @@ class ListsController: UIViewController {
 // MARK: - UITableViewDataSource
 extension ListsController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return ListSection.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].lists.count
+        guard let listSection = ListSection(rawValue: section) else {return 0}
+        switch listSection {
+        case .smartLists:
+            return smartLists.count
+        case .userLists:
+            return userLists.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ListCell.identifier, for: indexPath) as! ListCell
-        let list = sections[indexPath.section].lists[indexPath.row]
+        guard let listSection = ListSection(rawValue: indexPath.section) else {return UITableViewCell()}
+        let list: List
+        switch listSection {
+        case .smartLists:
+            list = smartLists[indexPath.row]
+            cell.isHidden = !(list as! SmartList).isShow 
+        case .userLists:
+            list = userLists[indexPath.row]
+        }
         cell.configure(list: list)
         return cell
     }
@@ -127,15 +132,24 @@ extension ListsController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension ListsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        let section = sections[indexPath.section]
-        return section.isEdit
+        guard let listSection = ListSection(rawValue: indexPath.section) else {return false}
+        return listSection.isEdit
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] action, view, completion in
-            guard let id = UserManager.currentUserId(), let list = self?.sections[indexPath.section].lists[indexPath.row] else {return}
+            guard let id = UserManager.currentUserId(),
+                let self = self,
+                let listSection = ListSection(rawValue: indexPath.section) else {return}
             
+            let list: List
+            switch listSection {
+            case .smartLists:
+                return
+            case .userLists:
+                list = self.userLists[indexPath.row]
+            }
             ListManager.shared.delete(withUserUid: id, usingList: list)
             completion(true)
         }
@@ -151,8 +165,19 @@ extension ListsController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let section = sections[section]
-        return section.footerViewIsShow ? 1 : 0
+        guard let listSection = ListSection(rawValue: section) else {return 0}
+        return listSection.footerViewIsShow ? 1 : 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let listSection = ListSection(rawValue: indexPath.section) else {return tableView.rowHeight}
+        switch listSection {
+        case .smartLists:
+            let smartList = smartLists[indexPath.row]
+            return smartList.isShow ? tableView.rowHeight : 0
+        case .userLists:
+            return tableView.rowHeight
+        }
     }
 }
 

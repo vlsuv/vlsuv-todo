@@ -8,26 +8,34 @@
 
 import Foundation
 
-enum SectionName {
+enum ListSection: Int, CaseIterable, CustomStringConvertible {
     case smartLists
     case userLists
-}
-
-struct ListsSection {
-    let name: SectionName
-    var lists: [List]
-    let isEdit: Bool
-    let footerViewIsShow: Bool
     
-    init(name: SectionName, lists: [List], isEdit: Bool, footerViewIsShow: Bool) {
-        self.name = name
-        self.lists = lists
-        self.isEdit = isEdit
-        self.footerViewIsShow = footerViewIsShow
+    var description: String {
+        switch self {
+        case .smartLists:
+            return "SMART LISTS"
+        case .userLists:
+            return "USER LISTS"
+        }
     }
     
-    static func getSections() -> [ListsSection] {
-        [ListsSection(name: .smartLists, lists: [SmartList](), isEdit: false, footerViewIsShow: true),
-         ListsSection(name: .userLists, lists: [UserList](), isEdit: true, footerViewIsShow: false)]
+    var isEdit: Bool {
+        switch self {
+        case .smartLists:
+            return false
+        case .userLists:
+            return true
+        }
+    }
+    
+    var footerViewIsShow: Bool {
+        switch self {
+        case .smartLists:
+            return true
+        case .userLists:
+            return false
+        }
     }
 }

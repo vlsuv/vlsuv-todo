@@ -104,8 +104,28 @@ class ListManager {
         }
     }
     
+    func updateSmartList(withUserUid userUid: String, usingList list: SmartList) {
+        
+        do {
+            try db
+            .collection(FirebaseKeys.CollectionPath.users)
+            .document(userUid)
+            .collection(FirebaseKeys.CollectionPath.smartLists)
+            .document(list.id!)
+                .setData(from: list)
+        }catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     func addSmartLists(withUserUid userUid: String, completion: @escaping (Error?) -> ()) {
-        let smartLists: [SmartList] = SmartList.get()
+        
+        let smartLists = [
+            SmartList(title: "All", type: .all, image: .folder),
+            SmartList(title: "Important", type: .important, image: .star),
+            SmartList(title: "Completed", type: .completed, image: .check)
+        ]
+        
         smartLists.forEach { smartList in
             do {
                 let _ = try db
