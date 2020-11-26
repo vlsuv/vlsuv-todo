@@ -49,6 +49,10 @@ class AccountInfoView: UIView {
         return button
     }()
     
+    func configure(user: UserModel?) {
+        userNameLabel.text = user?.email
+    }
+    
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)

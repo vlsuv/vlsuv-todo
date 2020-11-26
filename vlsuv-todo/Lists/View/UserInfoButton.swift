@@ -25,8 +25,8 @@ class UserInfoButton: UIButton {
         return imageView
     }()
     
-    func configureUser() {
-        userName.text = "vlsuv"
+    func configureUser(user: UserModel?) {
+        userName.text = user?.email
         userImage.image = UIImage(named: "userImage")
     }
     

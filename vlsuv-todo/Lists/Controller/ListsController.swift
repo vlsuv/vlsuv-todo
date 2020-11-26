@@ -85,7 +85,9 @@ class ListsController: UIViewController {
     
     private func setupUserInfoButton() {
         userInfoButton.addTarget(self, action: #selector(showUserSettings), for: .touchUpInside)
-        userInfoButton.configureUser()
+        UserManager.currentUserData { user in
+            userInfoButton.configureUser(user: user)
+        }
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: userInfoButton)
     }
     

@@ -17,6 +17,11 @@ class UserManager {
         return Auth.auth().currentUser?.uid
     }
     
+    static func currentUserData(completion: (UserModel?) -> ()) {
+        guard let currentUser = Auth.auth().currentUser else {return}
+        completion(UserModel(user: currentUser))
+    }
+    
     static func createUser(email: String, password: String, completion: @escaping (Error?) -> ()) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {

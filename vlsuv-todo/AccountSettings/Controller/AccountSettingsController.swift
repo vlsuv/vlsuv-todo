@@ -77,6 +77,9 @@ class AccountSettingsController: UIViewController {
     private func setupAccountInfoView() {
         accountInfoView = AccountInfoView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: AccountInfoView.accountInfoViewHeight))
         accountInfoView.delegate = self
+        UserManager.currentUserData { user in
+            accountInfoView.configure(user: user)
+        }
 
         tableView.tableHeaderView = accountInfoView
     }
